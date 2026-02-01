@@ -52,7 +52,6 @@ class EmpathyEngine:
     
     # Pattern detection thresholds
     NONLINEAR_MARKER_THRESHOLD = 2
-    EMOTIONAL_INTENSITY_THRESHOLD = 0.6
     
     # Safety patterns
     HARM_MARKERS = [

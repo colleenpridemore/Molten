@@ -1,0 +1,66 @@
+# OpenClaw Identity Configuration
+
+# Authentication Settings
+auth:
+  # Token expiration time in seconds (default: 3600 = 1 hour)
+  token_expiration: 3600
+  
+  # Token type (default: bearer)
+  token_type: "bearer"
+  
+  # Allow multiple sessions per user
+  multi_session: true
+
+# Identity Settings
+identity:
+  # Require email verification
+  require_email_verification: false
+  
+  # Minimum username length
+  min_username_length: 3
+  
+  # Maximum username length
+  max_username_length: 32
+  
+  # Username pattern (regex)
+  username_pattern: "^[a-zA-Z0-9_-]+$"
+
+# Security Settings
+security:
+  # Enable rate limiting
+  rate_limiting: false
+  
+  # Maximum authentication attempts before lockout
+  max_auth_attempts: 5
+  
+  # Lockout duration in seconds
+  lockout_duration: 300
+
+# Storage Settings (for future implementation)
+storage:
+  # Storage backend (memory, database, etc.)
+  backend: "memory"
+  
+  # Connection settings (when using database)
+  connection:
+    host: "localhost"
+    port: 5432
+    database: "openclaw"
+
+# Logging Settings
+logging:
+  # Enable authentication logging
+  log_auth_attempts: true
+  
+  # Enable identity changes logging
+  log_identity_changes: true
+  
+  # Log level (debug, info, warning, error)
+  log_level: "info"
+
+# Integration Settings
+integration:
+  # Aethel-specific settings
+  aethel:
+    enabled: true
+    # Additional Aethel configuration goes here

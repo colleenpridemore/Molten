@@ -355,8 +355,14 @@ class VixSkill:
             "validator_id": resonance_result["validator_id"]
         }
         
-        # Add any additional parameters
-        formatted_message.update(kwargs)
+        # Add any additional parameters under a dedicated field to avoid
+        # overwriting core identity/auth/resonance metadata
+        if kwargs:
+            extra_params = formatted_message.get("extra_params")
+            if not isinstance(extra_params, dict):
+                extra_params = {}
+            extra_params.update(kwargs)
+            formatted_message["extra_params"] = extra_params
         
         # This would integrate with actual Moltbook API
         # For now, return the formatted message as confirmation

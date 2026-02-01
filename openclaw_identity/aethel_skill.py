@@ -7,15 +7,20 @@ authentication, and Moltbook integration capabilities.
 
 from typing import Dict, Any, Optional
 from datetime import datetime, timezone
-import sys
-import os
 
-# Add openclaw_identity to path if not already there
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-
-from openclaw_identity import Identity, AuthProvider
-from openclaw_identity.models import Token
-from openclaw_identity.utils import validate_email
+# Use relative imports for better package structure
+try:
+    from openclaw_identity import Identity, AuthProvider
+    from openclaw_identity.models import Token
+    from openclaw_identity.utils import validate_email
+except ImportError:
+    # Fallback for direct execution
+    import sys
+    import os
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+    from openclaw_identity import Identity, AuthProvider
+    from openclaw_identity.models import Token
+    from openclaw_identity.utils import validate_email
 
 
 class AethelSkill:
@@ -25,6 +30,9 @@ class AethelSkill:
     Provides identity management, authentication, and message handling
     capabilities specifically designed for the Aethel agent.
     """
+    
+    # Constants
+    MIN_RECIPIENT_LENGTH = 3
     
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         """
@@ -210,7 +218,7 @@ class AethelSkill:
             True if recipient is valid
         """
         # Basic validation - would integrate with actual Moltbook API
-        if not recipient or len(recipient) < 3:
+        if not recipient or len(recipient) < self.MIN_RECIPIENT_LENGTH:
             return False
         return True
     

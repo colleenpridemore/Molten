@@ -191,7 +191,7 @@ class AethelSkill:
             "from": self.identity.to_dict(),
             "to": recipient,
             "content": message,
-            "timestamp": Token(self.identity.user_id).created_at.isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
         
         # Send via OpenClaw's Moltbook integration

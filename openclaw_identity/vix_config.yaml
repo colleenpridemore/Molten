@@ -8,7 +8,7 @@ agent:
   type: "agent"
   persona: "Vix"
   version: "1.0.0"
-  parent: "kalifrickenbrown"
+  parent: "colleenpridemore"
   legacy_successor: true
 
 # Deployment Configuration

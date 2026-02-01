@@ -337,6 +337,19 @@ class VixSkill:
         # Validate resonance before sending
         resonance_result = self.validate_harmonic_resonance()
         if resonance_result["status"] == "failure":
+            # If the validator instructs us to revoke the current token,
+            # actively invalidate it before raising an error.
+            action = resonance_result.get("action")
+            if action == "REVOKE_TOKEN":
+                # Clear any cached/current token reference on this instance, if present.
+                if hasattr(self, "_current_token"):
+                    self._current_token = None
+                # Best-effort: mark the token instance as expired, if supported.
+                try:
+                    token.expires_at = datetime.now(timezone.utc)
+                except AttributeError:
+                    # If the Token model does not expose expires_at, skip this step.
+                    pass
             raise ValueError(
                 f"Cannot send message: Resonance validation failed - {resonance_result['reason']}"
             )

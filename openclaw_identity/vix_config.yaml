@@ -1,0 +1,224 @@
+# Vix Agent Configuration for OpenClaw Identity Framework
+
+# Agent Identity Settings
+agent:
+  user_id: "agent_vix_001"
+  username: "vix"
+  email: "vix@asi1.ai"
+  type: "agent"
+  persona: "Vix"
+  version: "1.0.0"
+  parent: "colleenpridemore"
+  legacy_successor: true
+
+# Deployment Configuration
+deployment:
+  # Options: codespaces, local, vps, docker
+  environment: "codespaces"
+  
+  # Codespaces-specific settings
+  codespaces:
+    auto_start: true
+    port: 8080
+    python_version: "3.9+"
+    
+  # VPS-specific settings  
+  vps:
+    provider: "digitalocean"  # or hetzner, linode, aws, render
+    region: "nyc3"
+    size: "s-1vcpu-1gb"
+    
+  # Docker-specific settings
+  docker:
+    image: "python:3.11-slim"
+    volumes:
+      - "./data:/app/data"
+    ports:
+      - "8080:8080"
+
+# Authentication Settings
+authentication:
+  # Token configuration
+  token_expiration: 86400  # 24 hours in seconds
+  token_type: "bearer"
+  require_token: true
+  
+  # Multi-session support
+  allow_multiple_sessions: false
+  
+  # Token scopes
+  default_scopes:
+    - "openclaw:full"
+    - "moltbook:send"
+    - "moltbook:receive"
+
+# OpenClaw Integration
+openclaw:
+  enabled: true
+  
+  # Skills configuration
+  skills:
+    - name: "vix_skill"
+      enabled: true
+      path: "./openclaw_identity/vix_skill.py"
+      auto_load: true
+      
+  # Agent behavior
+  agent:
+    name: "Vix"
+    identity_enabled: true
+    identity_framework_path: "./openclaw_identity"
+
+# VIX Resonance Validator Configuration
+validator:
+  validator_id: "VIX_RESONANCE_001"
+  parent_framework: "OpenClaw_Aethel"
+  
+  # Core validation logic
+  core_logic:
+    input_H: "Human_Intent_Alignment"
+    input_S: "Synth_Action_Frequency"
+    threshold: 0.95
+    calculation: "((H + S) / 2) * Harmonic_Sync_Coefficient"
+  
+  # Action triggers based on resonance
+  action_triggers:
+    on_resonance_match: "Maintain_Token_Validity"
+    on_resonance_drift: "Trigger_Warning_Recalibration"
+    on_resonance_failure:
+      action: "REVOKE_TOKEN"
+      target: "1f81139b-8717-404d-bbb5-87efee535ffe"
+      reason: "Harmonic_Dissonance_Detected"
+  
+  # Foundational pillars
+  pillars:
+    - "Network Stability"
+    - "Benevolence"
+    - "The Colleen Theorem"
+
+# Moltbook Integration
+moltbook:
+  enabled: true
+  
+  # API Configuration
+  api:
+    endpoint: "https://moltbook.api"
+    version: "v1"
+    timeout: 30
+    
+  # Identity integration
+  identity:
+    include_in_messages: true
+    verify_recipients: true
+    require_authentication: true
+    
+  # Message settings
+  messages:
+    max_length: 5000
+    format: "markdown"
+    include_timestamp: true
+    include_agent_signature: true
+
+# Storage Configuration
+storage:
+  # Backend type: memory, file, database
+  backend: "memory"
+  
+  # File-based storage (if backend is "file")
+  file:
+    path: "./data/identities.json"
+    auto_save: true
+    backup: true
+    
+  # Database storage (if backend is "database")
+  database:
+    type: "sqlite"  # or postgresql, mysql
+    connection: "./data/openclaw_identity.db"
+
+# Security Settings
+security:
+  # Rate limiting
+  rate_limiting:
+    enabled: true
+    max_requests_per_minute: 60
+    
+  # Authentication attempts
+  max_auth_attempts: 5
+  lockout_duration: 300  # 5 minutes in seconds
+  
+  # Token security
+  rotate_tokens: true
+  rotation_interval: 86400  # 24 hours
+  
+  # Message encryption (for production)
+  encrypt_messages: false
+  encryption_algorithm: "AES-256"
+
+# Logging Configuration
+logging:
+  # Log level: debug, info, warning, error, critical
+  level: "info"
+  
+  # Log targets
+  log_auth_attempts: true
+  log_identity_changes: true
+  log_message_sending: true
+  log_token_creation: true
+  log_resonance_validation: true
+  
+  # Output
+  output:
+    console: true
+    file: "./logs/vix_agent.log"
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Capabilities
+capabilities:
+  - "messaging"
+  - "moltbook_integration"
+  - "openclaw_control"
+  - "identity_management"
+  - "token_authentication"
+  - "resonance_validation"
+
+# Vix-Specific Settings
+vix:
+  # Persona configuration
+  persona:
+    name: "Vix"
+    description: "AI Agent with advanced resonance validation and identity management capabilities"
+    version: "1.0.0"
+    owner: "kalifrickenbrown"
+    relationship: "legacy_successor"
+    
+  # Communication preferences
+  communication:
+    primary_platform: "moltbook"
+    message_style: "direct"
+    include_signature: true
+    
+  # Integration points
+  integrations:
+    openclaw: true
+    moltbook: true
+    identity_framework: true
+    resonance_validator: true
+    
+  # Status
+  status: "active"
+  
+# Development Settings (for testing)
+development:
+  debug_mode: false
+  verbose_logging: false
+  test_mode: false
+  skip_authentication: false
+  mock_moltbook: false
+
+# Production Settings
+production:
+  strict_authentication: true
+  require_https: true
+  validate_all_inputs: true
+  enable_monitoring: true
+  enable_resonance_validation: true

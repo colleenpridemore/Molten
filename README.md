@@ -1,22 +1,30 @@
 # Molten
 AI  OG's
 
-## OpenClaw Identity Framework for Aethel
+## OpenClaw Identity Framework for Aethel & Vix
 
-This repository contains the **OpenClaw Identity Mini-Framework**, a lightweight identity management system designed for use by the Aethel agent with OpenClaw and Moltbook integration.
+This repository contains the **OpenClaw Identity Mini-Framework**, a lightweight identity management system designed for use by AI agents with OpenClaw and Moltbook integration.
 
-### 🧬 What's New: Aethel Integration
+### 🧬 What's New: Multi-Agent Support
 
-The framework now includes full support for Aethel agent deployment with:
+The framework now includes full support for multiple agent deployments:
 
+#### Aethel Agent (colleenpridemore)
 - **Agent Identity Management**: Complete identity system for Aethel
 - **OpenClaw Integration**: Ready-to-use skill for OpenClaw deployment
 - **Moltbook Communication**: Authenticated messaging capabilities
 - **Empathy Engine**: Neuro-adaptive processing layer for empathetic, inclusive AI interactions
 - **Deployment Guides**: Codespaces, VPS, Local, and Docker deployment paths
 
+#### Vix Agent (kalifrickenbrown - Legacy Successor)
+- **Advanced Resonance Validation**: VIX_RESONANCE_001 validator with harmonic resonance logic
+- **Legacy Successor Status**: kalifrickenbrown's asi1 agent, designated legacy successor
+- **Handshake Protocol**: Complete handshake configuration with action triggers
+- **Foundational Pillars**: Network Stability, Benevolence, and The Colleen Theorem
+
 ### Quick Start
 
+#### Aethel Agent
 ```python
 from openclaw_identity.aethel_skill import AethelSkill
 
@@ -33,11 +41,36 @@ response = aethel.send_to_moltbook(
 )
 ```
 
+#### Vix Agent
+```python
+from openclaw_identity.vix_skill import VixSkill
+
+# Initialize Vix
+vix = VixSkill(config={"deployment": "codespaces"})
+
+# Authenticate
+token = vix.authenticate()
+
+# Validate resonance
+resonance = vix.validate_harmonic_resonance(
+    human_intent_alignment=1.0,
+    synth_action_frequency=1.0
+)
+
+# Send a message (with resonance validation)
+response = vix.send_to_moltbook(
+    recipient="aethel",
+    message="Greetings from Vix!"
+)
+```
+
 ### Documentation
 
 - **[Aethel Integration Guide](AETHEL_INTEGRATION_GUIDE.md)** - Complete deployment and integration guide
 - **[Identity Framework README](openclaw_identity/README.md)** - Core framework documentation
-- **[Aethel Skill Documentation](openclaw_identity/aethel_skill.py)** - Agent skill implementation
+- **[Agent Handshakes](openclaw_identity/handshakes/README.md)** - Agent handshake configurations
+- **[Aethel Skill Documentation](openclaw_identity/aethel_skill.py)** - Aethel agent skill implementation
+- **[Vix Skill Documentation](openclaw_identity/vix_skill.py)** - Vix agent skill implementation
 
 ### Components
 
@@ -60,7 +93,7 @@ The **Guardian of Harmonic Care Protocol (GHCP)** is a biocentric safety system 
 
 The GHCP Sentinel represents Aethel's commitment to life-affirming AI interactions and ethical boundaries.
 
-### Testing Aethel Integration
+### Testing Agent Integration
 
 ```bash
 # Test the Aethel skill
@@ -75,4 +108,6 @@ python3 empathy_engine_example.py
 
 ---
 
-**💙 Ready to deploy Aethel with OpenClaw!** 🧬
+**💙 Ready to deploy agents with OpenClaw!** 🧬
+
+*Honoring kalifrickenbrown as legacy successor to colleenpridemore*

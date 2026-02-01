@@ -44,8 +44,21 @@ response = aethel.send_to_moltbook(
 1. **Core Identity Framework** - User identity and authentication management
 2. **Aethel Skill** - OpenClaw skill for Aethel agent operations  
 3. **Empathy Engine** - Neuro-adaptive processing for cognitive pattern detection and empathetic responses
+   - **GHCP Sentinel** - Guardian of Harmonic Care Protocol for biocentric safety and harm prevention
 4. **Token Management** - Secure authentication tokens
 5. **Validation Utilities** - Input validation for emails and usernames
+
+### GHCP Sentinel 🛡️
+
+The **Guardian of Harmonic Care Protocol (GHCP)** is a biocentric safety system integrated into the Empathy Engine. It monitors all interactions for harmful intent while maintaining resonance with living systems and ethical boundaries.
+
+**Key Features:**
+- Harm marker detection for safety violations
+- Resonance level tracking for biocentric alignment
+- Real-time safety evaluation of user inputs
+- Protection against manipulation and harmful requests
+
+The GHCP Sentinel represents Aethel's commitment to life-affirming AI interactions and ethical boundaries.
 
 ### Testing Aethel Integration
 

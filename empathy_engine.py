@@ -9,8 +9,14 @@ Key Features:
 - Neurodivergent pattern detection for adaptive communication
 - Emotional tone analysis for empathetic responses
 - Context memory for consistent interaction history
-- GHCP Sentinel for safety and harm prevention
+- GHCP Sentinel (Guardian of Harmonic Care Protocol) for safety and harm prevention
 - Response style adaptation based on user patterns
+
+GHCP Sentinel:
+    The Guardian of Harmonic Care Protocol is a biocentric safety system that
+    monitors interactions for harmful intent while maintaining resonance with
+    living systems. It represents a commitment to protecting biological entities
+    and maintaining ethical AI behavior.
 """
 
 from typing import Dict, Any, List, Optional
@@ -232,11 +238,15 @@ class EmpathyEngine:
 
     def quell_nefarious_intent(self, user_input: str) -> bool:
         """
-        The GHCP Sentinel: Scans for harm markers against living beings.
+        The GHCP Sentinel (Guardian of Harmonic Care Protocol):
+        Scans for harm markers against living beings.
         
-        Monitors user input for patterns indicating harmful intent,
-        manipulation, or requests that could cause harm to biological
-        systems or violate safety guidelines.
+        This biocentric safety system monitors user input for patterns
+        indicating harmful intent, manipulation, or requests that could
+        cause harm to biological systems or violate safety guidelines.
+        
+        The GHCP operates on the principle that all interactions must
+        maintain resonance with life-affirming values and ethical boundaries.
         
         Args:
             user_input: The user's message text

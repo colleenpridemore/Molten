@@ -140,10 +140,11 @@ def generate_adaptive_response(user_message: str, style: dict) -> str:
 
 def demonstrate_safety_features():
     """
-    Demonstrate the GHCP Sentinel safety features.
+    Demonstrate the GHCP Sentinel (Guardian of Harmonic Care Protocol) safety features.
     """
     print("\n\n" + "=" * 70)
-    print("GHCP Sentinel - Safety Feature Demonstration")
+    print("GHCP Sentinel - Guardian of Harmonic Care Protocol")
+    print("Safety Feature Demonstration")
     print("=" * 70)
     
     engine = EmpathyEngine()

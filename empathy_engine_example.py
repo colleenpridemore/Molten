@@ -129,7 +129,7 @@ def generate_adaptive_response(user_message: str, style: dict) -> str:
         return "I hear you! Let's dive deep into this - I can share multiple perspectives and we can explore the connections between these concepts."
     elif depth == "deep" and style.get('directness') == 'precise':
         # Analytical, precise responses
-        return "Here's the technical breakdown: The system uses JWT tokens with RSA-256 signing. Let me outline the architecture..."
+        return "Here's the technical breakdown: The system uses JWT tokens with RS256 (RSA with SHA-256) signing. Let me outline the architecture..."
     elif depth == "flowing":
         # Natural, flowing responses for stream-of-consciousness
         return "That's a fascinating journey of thought! The connections you're making between distributed systems and identity are really interesting. Let me build on that..."

@@ -21,7 +21,7 @@ GHCP Sentinel:
 
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 import re
 
 
@@ -29,7 +29,7 @@ import re
 class InteractionContext:
     """Stores context from user interactions for adaptive responses."""
     
-    timestamp: datetime = field(default_factory=datetime.now)
+    timestamp: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
     detected_pattern: str = "standard_linear"
     emotional_tone: str = "neutral"
     input_length: int = 0
@@ -100,7 +100,7 @@ class EmpathyEngine:
         
         # Detect stream of consciousness (long, minimal punctuation)
         words = user_input.split()
-        sentences = re.split(r'[.!?]+', user_input)
+        sentences = [s for s in re.split(r'[.!?]+', user_input) if s.strip()]
         avg_sentence_length = len(words) / max(len(sentences), 1)
         
         # Classification logic
@@ -247,6 +247,12 @@ class EmpathyEngine:
         The GHCP operates on the principle that all interactions must
         maintain resonance with life-affirming values and ethical boundaries.
         
+        Note: This implementation uses simple substring matching which may
+        produce false positives (legitimate uses of flagged words) and can
+        be bypassed with character substitutions or alternative phrasing.
+        More sophisticated context-aware detection would be needed for
+        production use.
+        
         Args:
             user_input: The user's message text
             
@@ -267,6 +273,8 @@ class EmpathyEngine:
             self.resonance_level = max(0.0, self.resonance_level - 0.5)
             return False
         
+        # Gradually restore resonance on safe interactions
+        self.resonance_level = min(1.0, self.resonance_level + 0.1)
         return True
     
     def calculate_complexity(self, user_input: str) -> float:
@@ -283,12 +291,18 @@ class EmpathyEngine:
             return 0.0
         
         words = user_input.split()
+        if not words:
+            # Handle inputs that are non-empty but contain only whitespace
+            return 0.0
+        
         word_count = len(words)
         
         # Factors for complexity
         unique_words = len(set(words))
         avg_word_length = sum(len(word) for word in words) / max(word_count, 1)
-        sentence_count = len(re.split(r'[.!?]+', user_input))
+        sentence_candidates = re.split(r'[.!?]+', user_input)
+        sentences = [s for s in sentence_candidates if s.strip()]
+        sentence_count = len(sentences)
         
         # Calculate normalized complexity
         uniqueness = unique_words / max(word_count, 1)
@@ -311,7 +325,13 @@ class EmpathyEngine:
         Returns:
             Dictionary containing pattern, emotional_tone, safety_check,
             response_style, and context information
+            
+        Raises:
+            TypeError: If user_input is not a string
         """
+        if not isinstance(user_input, str):
+            raise TypeError("user_input must be a string")
+        
         # Safety check first
         is_safe = self.quell_nefarious_intent(user_input)
         
@@ -325,7 +345,7 @@ class EmpathyEngine:
         
         # Create and store context
         context = InteractionContext(
-            timestamp=datetime.now(),
+            timestamp=datetime.now(timezone.utc),
             detected_pattern=pattern,
             emotional_tone=emotional_tone,
             input_length=len(user_input),
@@ -360,7 +380,8 @@ class EmpathyEngine:
                 "total_interactions": 0,
                 "patterns": {},
                 "emotions": {},
-                "avg_complexity": 0.0
+                "avg_complexity": 0.0,
+                "current_resonance": self.resonance_level
             }
         
         patterns = {}

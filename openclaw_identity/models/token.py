@@ -3,7 +3,7 @@ Token model for authentication and authorization.
 """
 
 from typing import Optional, Dict, Any
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import uuid
 
 
@@ -35,7 +35,7 @@ class Token:
         self.token_type = token_type
         self.scope = scope
         self.metadata = metadata or {}
-        self.created_at = datetime.utcnow()
+        self.created_at = datetime.now(timezone.utc)
         self.expires_at = self.created_at + timedelta(seconds=expires_in)
 
     def is_expired(self) -> bool:
@@ -45,7 +45,7 @@ class Token:
         Returns:
             True if expired, False otherwise
         """
-        return datetime.utcnow() > self.expires_at
+        return datetime.now(timezone.utc) > self.expires_at
 
     def is_valid(self) -> bool:
         """

@@ -20,6 +20,7 @@ class AuthProvider:
         """
         self.config = config or {}
         self._identities: Dict[str, Identity] = {}
+        self._username_to_userid: Dict[str, str] = {}
 
     def authenticate(self, username: str, credentials: Dict[str, Any]) -> Optional[Identity]:
         """
@@ -33,8 +34,9 @@ class AuthProvider:
             Identity object if authentication succeeds, None otherwise
         """
         # Basic implementation - to be extended
-        if username in self._identities:
-            return self._identities[username]
+        user_id = self._username_to_userid.get(username)
+        if user_id and user_id in self._identities:
+            return self._identities[user_id]
         return None
 
     def register(self, identity: Identity) -> bool:
@@ -49,6 +51,7 @@ class AuthProvider:
         """
         if identity.user_id not in self._identities:
             self._identities[identity.user_id] = identity
+            self._username_to_userid[identity.username] = identity.user_id
             return True
         return False
 
@@ -75,6 +78,10 @@ class AuthProvider:
             True if revocation succeeds, False otherwise
         """
         if user_id in self._identities:
+            identity = self._identities[user_id]
+            # Remove from username mapping
+            if identity.username in self._username_to_userid:
+                del self._username_to_userid[identity.username]
             del self._identities[user_id]
             return True
         return False

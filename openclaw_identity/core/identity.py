@@ -3,7 +3,7 @@ Identity class for managing user identities within OpenClaw.
 """
 
 from typing import Optional, Dict, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 class Identity:
@@ -31,8 +31,8 @@ class Identity:
         self.username = username
         self.email = email
         self.metadata = metadata or {}
-        self.created_at = datetime.utcnow()
-        self.updated_at = datetime.utcnow()
+        self.created_at = datetime.now(timezone.utc)
+        self.updated_at = datetime.now(timezone.utc)
 
     def update(self, **kwargs) -> None:
         """
@@ -44,7 +44,7 @@ class Identity:
         for key, value in kwargs.items():
             if hasattr(self, key):
                 setattr(self, key, value)
-        self.updated_at = datetime.utcnow()
+        self.updated_at = datetime.now(timezone.utc)
 
     def to_dict(self) -> Dict[str, Any]:
         """

@@ -106,6 +106,54 @@ python3 empathy_engine.py
 python3 empathy_engine_example.py
 ```
 
+## Installation
+
+### Quick Install
+
+```bash
+# Clone the repository
+git clone https://github.com/colleenpridemore/Molten.git
+cd Molten
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Install the package
+pip install -e .
+```
+
+### Development Setup
+
+```bash
+# Install with development dependencies
+pip install -e ".[dev]"
+
+# Run tests
+pytest tests/
+
+# Run with coverage
+pytest tests/ --cov=openclaw_identity --cov=empathy_engine
+```
+
+### Docker Deployment
+
+```bash
+# Build the Docker image
+docker build -t openclaw-identity .
+
+# Run the container
+docker run -p 8080:8080 openclaw-identity
+```
+
+### Configuration
+
+Copy `.env.example` to `.env` and configure your settings:
+
+```bash
+cp .env.example .env
+# Edit .env with your configuration
+```
+
 ---
 
 **💙 Ready to deploy agents with OpenClaw!** 🧬

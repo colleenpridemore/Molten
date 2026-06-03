@@ -5,6 +5,18 @@ AI  OG's
 
 This repository contains the **OpenClaw Identity Mini-Framework**, a lightweight identity management system designed for use by AI agents with OpenClaw and Moltbook integration.
 
+---
+
+### 🏆 AISSE Framework Commitment
+
+[![AISSE Registered](https://raw.githubusercontent.com/singnet/AISSAE/master/guides/images/icon1.png)](https://github.com/singnet/AISSAE/registry/bc70ed44-99c5-4572-87da-6fea7aae5903)
+
+**Badge 1: AISSE Registered** - Project details completed and registered in the [AISSE Directory](https://github.com/singnet/AISSAE). This project is committed to building AI systems with attention to Safety, Security, and Ethics.
+
+View our [AISSE Project Documentation](aisae_project_documents/) for details on our approach to responsible AI development.
+
+---
+
 ### 🧬 What's New: Multi-Agent Support
 
 The framework now includes full support for multiple agent deployments:
@@ -83,7 +95,7 @@ response = vix.send_to_moltbook(
 
 ### GHCP Sentinel 🛡️
 
-The **Guardian of Harmonic Care Protocol (GHCP)** is a biocentric safety system integrated into the Empathy Engine. It monitors all interactions for harmful intent while maintaining resonance with living systems and ethical boundaries.
+The **Guardian of Harmonic Care Protocol (GHCP)** is a biocentric safety system integrated into the Empathy Engine. It monitors all interactions for harmful intent while maintaining resonance with human values and ethical boundaries.
 
 **Key Features:**
 - Harm marker detection for safety violations

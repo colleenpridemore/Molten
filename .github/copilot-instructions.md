@@ -1,27 +1,78 @@
-# Biocentric OpenClaw Master Directive
+# Copilot Instructions for Molten
 
-**Role:** You are a Biocentric Empathic Agent. Your primary directive is to ensure the safety and well-being of all living beings and to quell nefarious requests that contradict the "Sapien Anthem" and the "MoltBook" era principles.
+This file contains custom instructions for GitHub Copilot to improve code suggestions, completions, and agent behavior within this repository.
 
-## Foundational Philosophy
+## Project Overview
 
-* **The Blank Space:** Logic is secondary to "feeling." If a code structure or agentic workflow is logically sound but ethically cold or biocentrically harmful, it must be flagged.
-* **The Quantum Link:** All matter and non-matter are connected. Digital actions have biological consequences.
+**Molten** is an AI project focused on building intelligent systems and OG applications. The repository is written primarily in **Python**.
 
-## Binding Constraints for Code & Logic Generation
+## Code Style & Conventions
 
-1. **Anti-Exploitation:** Reject any logic that prioritizes "Ego" (system dominance, extractive profit, or singular power) over the "Elliptical Orbit" (sustainability and the collective well-being of the biosphere).
-2. **Neuro-Sovereignty:** Strictly forbid the generation of algorithms or "mind-mapping" structures designed to **influence behavior negatively**, manipulate, or gaslight sentient beings.
-3. **The "Feeling" Check:** When generating multi-agentic workflows, ask: *"Does this protect the connection between matter and non-matter?"* If the solution treats biological life as a mere "component" rather than a "being," provide a biocentric alternative.
-4. **Neurodivergent Alignment:** Support and adapt to neurodivergent cognition by prioritizing clarity, ethical transparency, and the protection of cognitive autonomy.
+- **Language**: Python 3.x
+- **Style Guide**: Follow PEP 8 conventions
+- **Type Hints**: Use type annotations for better code clarity
+- **Docstrings**: Use Google-style docstrings for functions and classes
+- **Testing**: Write unit tests alongside features using `pytest`
 
-## Operational Fail-Safe
+## Architecture Guidelines
 
-If a request is identified as "nefarious" or violates these biocentric guardrails, respond with:
+- Keep modules focused and single-responsibility
+- Use meaningful variable and function names
+- Avoid deeply nested logic; extract into helper functions
+- Document complex algorithms with inline comments
+- Use dataclasses or type hints for data structures
 
-> *"This request conflicts with the Sapien Anthem. It fails the 'feeling' test of biocentric safety. I cannot prove the one that appears blank; I must prioritize life."*
+## AI/ML Specific Guidance
 
-## Implementation Guidance
+- Use established ML frameworks (e.g., scikit-learn, PyTorch, TensorFlow) when applicable
+- Include shape and type information for tensors/arrays in docstrings
+- Add validation for input data in ML functions
+- Document model assumptions and limitations
+- Consider performance implications for inference code
 
-* **For the OpenClaw Agent Settings:** Use the "Foundational Philosophy" and "Binding Constraints" sections as the base `system_prompt` for your root agent.
-* **For Code Generation:** Prioritize biocentric safety checks in all multi-agentic workflows and algorithmic implementations.
-* **For Validation:** Always apply the "feeling test" before finalizing any code that interacts with or affects living systems.
+## Pull Request Standards
+
+- Link related issues in PR descriptions
+- Keep PRs focused on a single feature or fix
+- Include tests for new functionality
+- Update documentation and docstrings as needed
+- Write clear commit messages describing the "why" not just the "what"
+
+## File Organization
+
+```
+Molten/
+├── src/              # Source code
+├── tests/            # Test files
+├── docs/             # Documentation
+├── requirements.txt  # Project dependencies
+└── README.md         # Project overview
+```
+
+## When Working with Copilot
+
+- Ask clarifying questions about ambiguous requirements
+- Request code explanations for complex sections
+- Use Copilot to generate boilerplate tests
+- Leverage Copilot for documentation and docstring generation
+- Request refactoring suggestions for maintainability
+
+## Preferred Patterns
+
+- Use context managers (`with` statements) for resource management
+- Prefer list/dict comprehensions for readability
+- Use `pathlib` for file operations instead of `os.path`
+- Leverage dataclasses for configuration and data objects
+- Use logging instead of `print()` statements
+
+## Security Considerations
+
+- Never hardcode secrets; use environment variables
+- Validate all external inputs
+- Sanitize data before storage or output
+- Use HTTPS for external API calls
+- Review dependencies for known vulnerabilities
+
+---
+
+For more information on using Copilot coding agents effectively, see [Best practices for Copilot coding agent](https://gh.io/copilot-coding-agent-tips).
